@@ -1,0 +1,7 @@
+{
+    "ConsoleTitle": "Minecraft Server Wrapper",
+    "JavaExecutable": "jre\\jdk-17.0.2\\bin\\java.exe",
+    "ServerJar": "arclight-forge-1.18.2-1.0.8.jar",
+    "JvmArguments": "-Xmx1G -Xms1G"
+  }
+  
