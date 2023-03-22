@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "wRRaeTiOjFK3SDt8Hd+PIjBUyD7cUsvvld0crF9Qqs7lnuLR8nkRvJnENWnXhiyGNODcPWbE/f2IpHMj4nWsRQ==",
+  "dgSpecHash": "ztcLzniAxGoDAWDRdAHZEimkwmix33keTZyBGUjnXgve4pgTtM09/B3cfeRs/Z/f+SLX9JqmVasepU7aBteSuA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Swag\\Desktop\\Development\\BananaWrapper\\BananaWrapper\\BananaWrapper.csproj",
+  "projectFilePath": "C:\\Users\\Juzzi\\source\\repos\\BananaWrapper\\BananaWrapper.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Swag\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.14\\microsoft.netcore.app.runtime.win-x64.6.0.14.nupkg.sha512",
-    "C:\\Users\\Swag\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.14\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.14.nupkg.sha512",
-    "C:\\Users\\Swag\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.14\\microsoft.aspnetcore.app.runtime.win-x64.6.0.14.nupkg.sha512"
+    "C:\\Users\\Juzzi\\.nuget\\packages\\spectre.console\\0.46.0\\spectre.console.0.46.0.nupkg.sha512",
+    "C:\\Users\\Juzzi\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512"
   ],
   "logs": []
 }

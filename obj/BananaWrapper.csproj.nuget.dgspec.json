@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Swag\\Desktop\\Development\\BananaWrapper\\BananaWrapper\\BananaWrapper.csproj": {}
+    "C:\\Users\\Juzzi\\source\\repos\\BananaWrapper\\BananaWrapper.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Swag\\Desktop\\Development\\BananaWrapper\\BananaWrapper\\BananaWrapper.csproj": {
+    "C:\\Users\\Juzzi\\source\\repos\\BananaWrapper\\BananaWrapper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Swag\\Desktop\\Development\\BananaWrapper\\BananaWrapper\\BananaWrapper.csproj",
+        "projectUniqueName": "C:\\Users\\Juzzi\\source\\repos\\BananaWrapper\\BananaWrapper.csproj",
         "projectName": "BananaWrapper",
-        "projectPath": "C:\\Users\\Swag\\Desktop\\Development\\BananaWrapper\\BananaWrapper\\BananaWrapper.csproj",
-        "packagesPath": "C:\\Users\\Swag\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Swag\\Desktop\\Development\\BananaWrapper\\BananaWrapper\\obj\\",
+        "projectPath": "C:\\Users\\Juzzi\\source\\repos\\BananaWrapper\\BananaWrapper.csproj",
+        "packagesPath": "C:\\Users\\Juzzi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Juzzi\\source\\repos\\BananaWrapper\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Swag\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Juzzi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,42 +43,28 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Spectre.Console": {
+              "target": "Package",
+              "version": "[0.46.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[6.0.14, 6.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[6.0.14, 6.0.14]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[6.0.14, 6.0.14]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win-x64": {
-          "#import": []
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

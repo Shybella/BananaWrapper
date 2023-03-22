@@ -5,6 +5,12 @@ class Program
 {
     static void Main(string[] args)
     {
+        if (!File.Exists("config.json"))
+        {
+            Config.CreateDefaultConfig();
+            Console.WriteLine("config.json created. Please edit it and restart the program.");
+        }
+
         var configJson = File.ReadAllText("config.json");
         var config = JsonSerializer.Deserialize<Config>(configJson);
 
