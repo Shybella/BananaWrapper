@@ -1,5 +1,3 @@
-Sure, here is a simple readme for your application that you can use in your Github repository:
-
 # Minecraft Server Wrapper
 
 Minecraft Server Wrapper is a simple console application that wraps around the Minecraft server process on Windows machines.
