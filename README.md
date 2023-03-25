@@ -10,7 +10,7 @@ If the server stops running for any reason, the wrapper will automatically resta
 
 ## Max Tick Time
 
-Make sure you set the max-tick-time in your server.properties file between 80000-120000. This ensures that the connection to the server stays stable.
+Make sure you set the max-tick-time in your server.properties file between 80000-120000. This ensures the server actually stops on a crash and does not hang.
 
 ## Installation
 
