@@ -14,6 +14,7 @@ class MinecraftServerWrapper
     private bool _autoRestart;
     private System.Timers.Timer _timer;
     private string[] _commands;
+    private List<System.Timers.Timer> _loopingCommandTimers;
 
     public MinecraftServerWrapper(Config config)
     {
@@ -21,6 +22,23 @@ class MinecraftServerWrapper
         _serverJar = config.ServerJar;
         _jvmArguments = config.JvmArguments;
         _commands = config.Commands;
+        _loopingCommandTimers = new List<System.Timers.Timer>();
+
+        foreach (var loopingCommand in config.LoopingCommands)
+        {
+            if (loopingCommand.Loop)
+            {
+                var timer = new System.Timers.Timer(loopingCommand.Interval * 1000); //convert seconds to milliseconds
+                timer.Elapsed += (s, e) => ExecuteCommand(loopingCommand.Command);
+                timer.AutoReset = true;
+                timer.Start();
+                _loopingCommandTimers.Add(timer);
+            }
+            else
+            {
+                ExecuteCommand(loopingCommand.Command);
+            }
+        }
     }
 
     public void Start(bool autoRestart = false)
@@ -84,6 +102,14 @@ class MinecraftServerWrapper
 
     public void Stop()
     {
+        foreach (var timer in _loopingCommandTimers)
+        {
+            timer.Stop();
+            timer.Dispose();
+        }
+        
+        _loopingCommandTimers.Clear();
+
         if (_serverProcess == null || _serverProcess.HasExited)
         {
             Console.WriteLine("Server is not running.");
@@ -118,7 +144,7 @@ class MinecraftServerWrapper
     //executes commands from the _commands array
     private void ExecuteCommands(Object source, ElapsedEventArgs e)
     {
-        if(_commands == null || _commands.Length == 0) return;
+        if (_commands == null || _commands.Length == 0) return;
 
         foreach (string command in _commands)
         {
