@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VSftHCSB0E+xSRSElgu6IpLoASNsXny4AO2z6rSXJNKqMIaQ0PRnqopWZDADCGz4Pl9kh1paVVi8p8L+4kKsGg==",
+  "dgSpecHash": "ztepQcuRlnYx3Xr9tX2dqdaoIAjqZIxhHSTu0pcAPWrnJCy4aPn7URqq++zKbdLr8dIPbsl44BGNALcgzWFvGA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Juzzi\\source\\repos\\BananaWrapper\\BananaWrapper.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Juzzi\\.nuget\\packages\\consolegui\\1.4.1\\consolegui.1.4.1.nupkg.sha512",
-    "C:\\Users\\Juzzi\\.nuget\\packages\\spectre.console\\0.46.0\\spectre.console.0.46.0.nupkg.sha512",
-    "C:\\Users\\Juzzi\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

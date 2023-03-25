@@ -28,7 +28,8 @@ public class Config
             Commands = new List<CustomCommand>
             {
                 new CustomCommand { Command = "say This command will run after 10 seconds", Loop = false, Interval = 0, Delay = 10 },
-                new CustomCommand { Command = "say This command will only execute once", Loop = false, Interval = 0 }
+                new CustomCommand { Command = "say This command will only execute once", Loop = false, Interval = 0, Delay = 0 },
+                new CustomCommand { Command = "say This command will loop every 10 seconds", Loop = true, Interval = 10, Delay = 0 }
             }
         };
         var configJson = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });

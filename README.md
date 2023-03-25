@@ -2,8 +2,6 @@
 
 Minecraft Server Wrapper is a simple console application that wraps around the Minecraft server process on Windows machines.
 
-Minecraft Server Wrapper with Spectre.Console
-
 This is a console application that allows you to start and stop a Minecraft server from the command-line. It also provides an interface for issuing server commands.
 
 ## Auto-Restart
@@ -23,10 +21,6 @@ Make sure you set the max-tick-time in your server.properties file between 80000
 ```
 dotnet restore
 ```
-5. Create a `config.json` file with default values by running:
-```
-dotnet run --project MinecraftServerWrapper -- init
-```
 
 ## Usage
 
@@ -44,11 +38,34 @@ Once the application is running, use the following commands to interact with the
 
 ## Configuration
 
-The application reads configuration values from a `config.json` file in the root directory of the repository. Here are the available configuration options:
-
-- `ConsoleTitle`: string - the title of the console window.
-- `JavaExecutable`: string - the path to the Java executable used to start the Minecraft server.
-- `ServerJar`: string - the filename of the Minecraft server jar to be executed.
-- `JvmArguments`: string - the arguments passed to the Java virtual machine when starting the Minecraft server.
+Contents of config.js
+```
+{
+  "ConsoleTitle": "Minecraft Server Wrapper",
+  "JavaExecutable": "java",
+  "ServerJar": "server.jar",
+  "JvmArguments": "-Xmx2G -Xms2G",
+  "Commands": [
+    {
+      "Command": "say This command will run after 10 seconds",
+      "Loop": false,
+      "Interval": 0,
+      "Delay": 10
+    },
+    {
+      "Command": "say This command will only execute once",
+      "Loop": false,
+      "Interval": 0,
+      "Delay": 0
+    },
+    {
+      "Command": "say This command will loop every 10 seconds",
+      "Loop": true,
+      "Interval": 10,
+      "Delay": 0
+    }
+  ]
+}
+```
 
 If the `config.json` file does not exist, it will be created with default values when running the `init` command as mentioned above.
