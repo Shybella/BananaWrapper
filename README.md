@@ -67,5 +67,3 @@ Contents of config.js
   ]
 }
 ```
-
-If the `config.json` file does not exist, it will be created with default values when running the `init` command as mentioned above.
