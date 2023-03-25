@@ -14,33 +14,33 @@ class MinecraftServerWrapper
     private bool _autoRestart;
     private System.Timers.Timer _timer;
     private string[] _commands;
-    private List<System.Timers.Timer> _loopingCommandTimers;
+    private List<System.Timers.Timer> _CustomCommandTimers;
 
     public MinecraftServerWrapper(Config config)
     {
         _javaExecutable = config.JavaExecutable;
         _serverJar = config.ServerJar;
         _jvmArguments = config.JvmArguments;
-        _loopingCommandTimers = new List<System.Timers.Timer>();
+        _CustomCommandTimers = new List<System.Timers.Timer>();
 
-        foreach (var loopingCommand in config.Commands)
+        foreach (var CustomCommand in config.Commands)
         {
-            if (loopingCommand.Loop)
+            if (CustomCommand.Loop)
             {
-                var timer = new System.Timers.Timer(loopingCommand.Interval * 1000); // convert seconds to milliseconds
-                timer.Elapsed += (s, e) => ExecuteCommand(loopingCommand.Command);
+                var timer = new System.Timers.Timer(CustomCommand.Interval * 1000); // convert seconds to milliseconds
+                timer.Elapsed += (s, e) => ExecuteCommand(CustomCommand.Command);
                 timer.AutoReset = true;
                 timer.Start();
-                _loopingCommandTimers.Add(timer);
+                _CustomCommandTimers.Add(timer);
             }
             else
             {
-                if (loopingCommand.Delay > 0)
+                if (CustomCommand.Delay > 0)
                 {
-                    var timer = new System.Timers.Timer(loopingCommand.Delay * 1000); // convert seconds to milliseconds
+                    var timer = new System.Timers.Timer(CustomCommand.Delay * 1000); // convert seconds to milliseconds
                     timer.Elapsed += (s, e) =>
                     {
-                        ExecuteCommand(loopingCommand.Command);
+                        ExecuteCommand(CustomCommand.Command);
                         timer.Stop();
                         timer.Dispose();
                     };
@@ -49,7 +49,7 @@ class MinecraftServerWrapper
                 }
                 else
                 {
-                    ExecuteCommand(loopingCommand.Command);
+                    ExecuteCommand(CustomCommand.Command);
                 }
             }
         }
@@ -122,14 +122,6 @@ class MinecraftServerWrapper
             return;
         }
 
-        foreach (var timer in _loopingCommandTimers)
-        {
-            timer.Stop();
-            timer.Dispose();
-        }
-
-        _loopingCommandTimers.Clear();
-
         _autoRestart = false;
         _serverProcess.StandardInput.WriteLine("stop");
         _serverProcess.WaitForExit();
@@ -143,7 +135,7 @@ class MinecraftServerWrapper
     {
         if (_serverProcess == null || _serverProcess.HasExited)
         {
-            Console.WriteLine("Attempted to run command, but server is not running. Command: " + command);
+            Console.WriteLine("Server is not running! Attempted to execute command: " + command);
             return;
         }
 

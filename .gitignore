@@ -4,3 +4,6 @@
 **/obj/Debug/
 **/obj/Release/
 obj/project.nuget.cache
+.vscode/settings.json
+obj/project.nuget.cache
+obj/project.nuget.cache
