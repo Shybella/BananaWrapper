@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "ConsoleGUI/1.4.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ConsoleGUI.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ConsoleGUI.dll": {}
+        }
+      },
       "Spectre.Console/0.46.0": {
         "type": "package",
         "dependencies": {
@@ -26,6 +35,18 @@
     }
   },
   "libraries": {
+    "ConsoleGUI/1.4.1": {
+      "sha512": "7D2OmbLLYe4SbCOJKp5aOqRV2gSwNjsEIDUvgSRTSgCUvIoH7NPIK3i19eFjasEDkq7e/ArLiKcUY0WAvWdO0g==",
+      "type": "package",
+      "path": "consolegui/1.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "consolegui.1.4.1.nupkg.sha512",
+        "consolegui.nuspec",
+        "lib/netstandard2.0/ConsoleGUI.dll"
+      ]
+    },
     "Spectre.Console/0.46.0": {
       "sha512": "qd2OMEGxfQW1KLuQj56KKHkIK6eB/IUF/AET5CRl/efROHGsvBehx9shfkL0HgJEHLCwRiR7foWi4/LkdPk18g==",
       "type": "package",
@@ -70,6 +91,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "ConsoleGUI >= 1.4.1",
       "Spectre.Console >= 0.46.0"
     ]
   },
@@ -117,6 +139,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "ConsoleGUI": {
+            "target": "Package",
+            "version": "[1.4.1, )"
+          },
           "Spectre.Console": {
             "target": "Package",
             "version": "[0.46.0, )"

@@ -21,14 +21,13 @@ class MinecraftServerWrapper
         _javaExecutable = config.JavaExecutable;
         _serverJar = config.ServerJar;
         _jvmArguments = config.JvmArguments;
-        _commands = config.Commands;
         _loopingCommandTimers = new List<System.Timers.Timer>();
 
-        foreach (var loopingCommand in config.LoopingCommands)
+        foreach (var loopingCommand in config.Commands)
         {
             if (loopingCommand.Loop)
             {
-                var timer = new System.Timers.Timer(loopingCommand.Interval * 1000); //convert seconds to milliseconds
+                var timer = new System.Timers.Timer(loopingCommand.Interval * 1000); // convert seconds to milliseconds
                 timer.Elapsed += (s, e) => ExecuteCommand(loopingCommand.Command);
                 timer.AutoReset = true;
                 timer.Start();
@@ -36,7 +35,22 @@ class MinecraftServerWrapper
             }
             else
             {
-                ExecuteCommand(loopingCommand.Command);
+                if (loopingCommand.Delay > 0)
+                {
+                    var timer = new System.Timers.Timer(loopingCommand.Delay * 1000); // convert seconds to milliseconds
+                    timer.Elapsed += (s, e) =>
+                    {
+                        ExecuteCommand(loopingCommand.Command);
+                        timer.Stop();
+                        timer.Dispose();
+                    };
+                    timer.AutoReset = false;
+                    timer.Start();
+                }
+                else
+                {
+                    ExecuteCommand(loopingCommand.Command);
+                }
             }
         }
     }
@@ -102,19 +116,19 @@ class MinecraftServerWrapper
 
     public void Stop()
     {
-        foreach (var timer in _loopingCommandTimers)
-        {
-            timer.Stop();
-            timer.Dispose();
-        }
-        
-        _loopingCommandTimers.Clear();
-
         if (_serverProcess == null || _serverProcess.HasExited)
         {
             Console.WriteLine("Server is not running.");
             return;
         }
+
+        foreach (var timer in _loopingCommandTimers)
+        {
+            timer.Stop();
+            timer.Dispose();
+        }
+
+        _loopingCommandTimers.Clear();
 
         _autoRestart = false;
         _serverProcess.StandardInput.WriteLine("stop");
@@ -129,7 +143,7 @@ class MinecraftServerWrapper
     {
         if (_serverProcess == null || _serverProcess.HasExited)
         {
-            Console.WriteLine("Server is not running.");
+            Console.WriteLine("Attempted to run command, but server is not running. Command: " + command);
             return;
         }
 

@@ -7,7 +7,9 @@ public class LoopingCommand
     public string Command { get; set; }
     public bool Loop { get; set; }
     public int Interval { get; set; }
+    public int Delay { get; set; } // new property
 }
+
 
 public class Config
 {
@@ -15,8 +17,7 @@ public class Config
     public string JavaExecutable { get; set; }
     public string ServerJar { get; set; }
     public string JvmArguments { get; set; }
-    public string[] Commands { get; set; }
-    public List<LoopingCommand> LoopingCommands { get; set; }
+    public List<LoopingCommand> Commands { get; set; }
 
     public static void CreateDefaultConfig()
     {
@@ -26,10 +27,9 @@ public class Config
             JavaExecutable = "java",
             ServerJar = "server.jar",
             JvmArguments = "-Xmx2G -Xms2G",
-            Commands = new string[] { "say Server started 5 minutes ago", "time set day" },
-            LoopingCommands = new List<LoopingCommand>
+            Commands = new List<LoopingCommand>
             {
-                new LoopingCommand { Command = "say This command will loop every 10 seconds", Loop = true, Interval = 10 },
+                new LoopingCommand { Command = "say This command will run after 10 seconds", Loop = false, Interval = 0, Delay = 10 },
                 new LoopingCommand { Command = "say This command will only execute once", Loop = false, Interval = 0 }
             }
         };

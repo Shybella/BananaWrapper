@@ -44,6 +44,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "ConsoleGUI": {
+              "target": "Package",
+              "version": "[1.4.1, )"
+            },
             "Spectre.Console": {
               "target": "Package",
               "version": "[0.46.0, )"
